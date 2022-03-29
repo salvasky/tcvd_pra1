@@ -2,19 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
-import os.path
+import os
 
-url = "https://mercatflors.cat/blog"
 url_2 = "https://mercatflors.cat/blog/reflexions-entorn-dun-confinament/"
 
-page = requests.get(url)
-soup = BeautifulSoup(page.content, 'html.parser')
 
 page_2 = requests.get(url_2)
 soup_2 = BeautifulSoup(page_2.content, 'html.parser')
 
-with open('test_mdf.html', 'w') as f:
-    f.write(soup.prettify())
 
 with open('test_mdf_confi.html', 'w') as f:
     f.write(soup_2.prettify())
@@ -46,7 +41,7 @@ titols = []
 links = []
 dates = []
 image = []
-text = []
+# text = []
 
 for article in soup_body.find_all('article'):
     tag = article.find('a')
@@ -56,7 +51,7 @@ for article in soup_body.find_all('article'):
     image.append(article.find('img')['src'])
 
 # Prova d'impressió de les dates dels posts
-print(titols)
+print(dates)
 
 # Creació d'un fitxer que emmagatzema les fotos de les artistes en format jpg
 noms = titols
