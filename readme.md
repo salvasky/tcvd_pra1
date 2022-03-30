@@ -3,7 +3,7 @@
 ----
 # **Mercat de les flors - Reflexions entorn del confinament**
 
-**Components del grup: **
+**Components del grup:**
 
 Joan Manuel López Ruiz <jlopezruiz012@uoc.edu>
 
