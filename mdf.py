@@ -41,6 +41,7 @@ titols = []
 links = []
 dates = []
 image = []
+phrase = []
 # text = []
 
 for article in soup_body.find_all('article'):
@@ -49,10 +50,13 @@ for article in soup_body.find_all('article'):
     links.append(tag['href'])
     dates.append(article.find('time')['datetime'])
     image.append(article.find('img')['src'])
+    tag2 = article.find('p')
+    phrase.append(tag2.string)
 
-# Prova d'impressió de les dates i títols dels posts
+# Prova d'impressió de les dates, títols i frases dels posts
 print(dates)
 print(titols)
+print(phrase)
 
 # Creació d'un fitxer que emmagatzema les fotos de les artistes en format jpg
 noms = titols
