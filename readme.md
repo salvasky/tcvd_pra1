@@ -38,14 +38,15 @@ més utilitzades en el text.
 
 El nostre codi té, de moment, les següents funcions:
 
-* Scrap sobre la pàgina principal amb Beautiful Soup.
+* Scrape sobre la pàgina principal amb Beautiful Soup.
 
 * Navegació a través de l'scroll infinit de la pàgina amb webdriver de Selenium
 per tal d'accedir als enllaços de tots els articles.
 
-* Extracció de la informació relativa a cada article: títol, data, foto, text íntegre de l'article.
+* Extracció de la informació relativa a cada article: títol, data,
+  (URL de la) foto, frase extreta de l'article.
 
-* Scrap de les pàgines de cadascun dels articles dels artistes per accedir al text íntegre 
+* Scrape de les pàgines de cadascun dels articles dels artistes per accedir al text íntegre 
 i incorporar-lo al csv resultant (en procés).
 
 * Emmagatzematge en un directori de les fotos de cada article en format jpg.
