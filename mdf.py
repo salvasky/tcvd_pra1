@@ -4,22 +4,23 @@ from selenium import webdriver
 import time
 import os
 
-url_2 = "https://mercatflors.cat/blog/reflexions-entorn-dun-confinament/"
+url = "https://mercatflors.cat/blog/reflexions-entorn-dun-confinament/"
+file_name = 'mdf.csv'
 
 
-page_2 = requests.get(url_2)
-soup_2 = BeautifulSoup(page_2.content, 'html.parser')
+# page = requests.get(url)
+# soup = BeautifulSoup(page.content, 'html.parser')
 
 
-with open('test_mdf_confi.html', 'w') as f:
-    f.write(soup_2.prettify())
+# with open('test_mdf_confi.html', 'w') as f:
+#     f.write(soup.prettify())
 
 # Navegació a una pàgina amb scroll infinit
 profile = webdriver.FirefoxProfile()
 profile.set_preference("general.useragent.override",
                        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/98.0")
 driver = webdriver.Firefox()
-driver.get("https://mercatflors.cat/blog/reflexions-entorn-dun-confinament/")
+driver.get(url)
 
 last_height = driver.execute_script('return document.body.scrollHeight')
 
@@ -31,31 +32,40 @@ while True:
         break
     last_height = new_height
 
-soup_inf = BeautifulSoup(driver.page_source, 'html.parser')
+soup = BeautifulSoup(driver.page_source, 'html.parser')
 
 # Cada entrada al blog va delimitada pels tags <article> i disposa de la seva url
 # Recollir totes les URLs, accedir-hi una a una i extreure la informació d'interès
-soup_body = soup_inf.body
+soup_body = soup.body
 
 titols = []
-links = []
-dates = []
+# links = []
+# dates = []
 image = []
 phrase = []
 # text = []
 
-for article in soup_body.find_all('article'):
+# Creació del fitxer csv on s'emmagetzemaran les dades
+with open(file_name, 'w') as f:
+    f.write('"ID","Title","Date","URL(prov)","Text","Phrase"\n')
+
+# Per cada article publicat, extreure informació d'interès i desar-la a csv
+for i, article in enumerate(soup_body.find_all('article')):
     tag = article.find('a')
     titols.append(tag.string)
-    links.append(tag['href'])
-    dates.append(article.find('time')['datetime'])
+    # links.append(tag['href'])
+    # dates.append(article.find('time')['datetime'])
     image.append(article.find('img')['src'])
     tag2 = article.find('p')
     phrase.append(tag2.string)
 
+    with open(file_name, 'a') as f:
+        f.write(str(i+1) + ',' + tag.string + ',' + article.find('time')['datetime'] +
+                ',' + tag['href'] + ',' + '"Text, Article"' + ',' + tag2.string + '\n')
+
 # Prova d'impressió de les dates, títols i frases dels posts
-print(dates)
-print(titols)
+# print(dates)
+# print(titols)
 print(phrase)
 
 # Creació d'un fitxer que emmagatzema les fotos de les artistes en format jpg

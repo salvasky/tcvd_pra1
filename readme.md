@@ -38,20 +38,18 @@ més utilitzades en el text.
 
 El nostre codi té, de moment, les següents funcions:
 
--Scrap sobre la pàgina principal amb Beautiful Soup i creació d'un 
-fitxer html amb l'estructura imbricada.
+* Scrap sobre la pàgina principal amb Beautiful Soup.
 
--Navegació a través de l'scroll infinit de la pàgina amb webdriver de Selenium
+* Navegació a través de l'scroll infinit de la pàgina amb webdriver de Selenium
 per tal d'accedir als enllaços de tots els articles.
 
--Extracció de la informació relativa a cada article: títol, data, foto, enllaç
-a l'article íntegre.
+* Extracció de la informació relativa a cada article: títol, data, foto, text íntegre de l'article.
 
--Scrap de les pàgines de cadascun dels artistes per accedir al text íntegre 
-(en procés).
+* Scrap de les pàgines de cadascun dels articles dels artistes per accedir al text íntegre 
+i incorporar-lo al csv resultant (en procés).
 
--Emmagatzematge en un directori de les fotos de cada article en format jpg.
+* Emmagatzematge en un directori de les fotos de cada article en format jpg.
 
--Creació del dataset i exportació del fitxer csv (en procés).
+* Creació del dataset i exportació del fitxer csv (en procés).
 
 
