@@ -50,13 +50,17 @@ for article in soup_body.find_all('article'):
     dates.append(article.find('time')['datetime'])
     image.append(article.find('img')['src'])
 
-# Prova d'impressió de les dates dels posts
+# Prova d'impressió de les dates i títols dels posts
 print(dates)
+print(titols)
 
 # Creació d'un fitxer que emmagatzema les fotos de les artistes en format jpg
 noms = titols
 
-os.mkdir('fotos')
+path = 'fotos'
+exists = os.path.exists('fotos')
+if not exists:
+    os.mkdir('fotos')
 
 for i in image:
     file_name = str(noms[0]) + '.jpg'
