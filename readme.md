@@ -31,12 +31,12 @@ pàgines respectives. Quan accedim a la pàgina principal, només hi apareixen
 els primers 4 quadres resum, i si fem un scroll els altres quadres resum es
 van carregant, fins a arribar a un total de 21 quadres.
 
-El dataset que volem generar contindria el títol de cada article (nom de l'artista),
-la data de publicació, la url de la foto de l'artista, el text complet. Valorem
-encara afegir-hi altres camps, com per exemple un resum de les paraules
-més utilitzades en el text.
+El dataset que generem amb l'script 'mdf.py' conté
+el títol de cada article (nom de l'artista),
+la data de publicació, la url de la foto de l'artista, el text complet i 
+la frase extreta del text que apareix al quadre-resum.
 
-El nostre codi té, de moment, les següents funcions:
+Previ a la generació del dataset, l'script mdf.py té les següents funcionalitats:
 
 * Scrape sobre la pàgina principal amb Beautiful Soup.
 
@@ -47,10 +47,11 @@ per tal d'accedir als enllaços de tots els articles.
   (URL de la) foto, frase extreta de l'article.
 
 * Scrape de les pàgines de cadascun dels articles dels artistes per accedir al text íntegre 
-i incorporar-lo al csv resultant (en procés).
+i incorporar-lo al csv resultant.
 
 * Emmagatzematge en un directori de les fotos de cada article en format jpg.
 
-* Creació del dataset i exportació del fitxer csv (en procés).
+* Creació i emmagatzament d'una imatge "tag cloud" en format .png amb les paraules més utilitzades
+d'un dels articles.
 
 
